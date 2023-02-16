@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/all.css') }}">
+    <title>signup</title>
+
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <h2>SIGN IN </h2>
+    <div class="container">
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<div class="notification is-danger">
+			{{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+
+			</div>
+		{% endif %}
+		{% endwith %}
+
+		<div class="form">
+
+			<div class="btn">
+				<button class="signUpBtn"> SIGN UP</button>
+			</div>
+
+		
+			<form action="/signup" method="POST" class="signUp">
+				<div class="formGroup">
+					<input type="text" name="name" id="user name" placeholder="User Name" >
+				</div>
+
+				<div class="formGroup">
+					<input type="email" name="email" id="email" placeholder="Email ID" >
+				</div>
+
+				<div class="formGroup">
+					<input type="password" name="password" id="password" placeholder="Password" autocomplete="off">
+				</div>
+
+
+				<div class="formGroup">
+					<input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" autocomplete="off">
+				</div>
+				<!--chekbox-->
+				<div class="checkBox">
+					<input type="checkbox" name="checkBox" id="checkBox">
+					<span class="text"> I agree with Terms & conditions .</span>
+				</div>
+
+				<div class="formGroup">
+					<button type="submit" name="valider" class="btn2">REGISTER</button>
+				</div>
+
+			</form>
+
+		</div>
+    </div>
+		
+    {% endblock %}
+</body>
+</html>
